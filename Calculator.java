@@ -15,8 +15,9 @@ public class Calculator {
         try {
             Scanner sc = new Scanner(file_in);
             while (sc.hasNextLine()) {
+                String exp = sc.nextLine();
+                String[] symbols = exp.split(" ");
                 try {
-                    String[] symbols = sc.nextLine().split(" ");
                     double a = Double.parseDouble(symbols[0]);
                     double b = Double.parseDouble(symbols[2]);
                     try {
@@ -25,8 +26,8 @@ public class Calculator {
                             try {
                                 throw new IOException();
                             } catch (IOException e) {
-                                System.out.println("Operation Error!");
-                                ps.println("Operation Error!");
+                                System.out.println(exp + " = Operation Error!");
+                                ps.println(exp + " = Operation Error!");
                             }
                         } else {
                             if (k.equals("/")) {
@@ -34,31 +35,31 @@ public class Calculator {
                                     try {
                                         throw new IOException();
                                     } catch (IOException e) {
-                                        System.out.println("Error! Division by zero");
-                                        ps.println("Error! Division by zero");
+                                        System.out.println(exp + " = Error! Division by zero");
+                                        ps.println(exp + " = Error! Division by zero");
                                     }
                                 } else {
-                                    System.out.println(a / b);
-                                    ps.println(a / b);
+                                    System.out.println(exp + " = " + (a/b));
+                                    ps.println(exp + " = " + (a/b));
                                 }
                             } else if (k.equals("+")) {
-                                System.out.println(a + b);
-                                ps.println(a + b);
+                                System.out.println(exp + " = " + (a+b));
+                                ps.println(exp + " = " + (a+b));
                             } else if (k.equals("-")) {
-                                System.out.println(a - b);
-                                ps.println(a - b);
+                                System.out.println(exp + " = " + (a-b));
+                                ps.println(exp + " = " + (a-b));
                             } else if (k.equals("*")) {
-                                System.out.println(a * b);
-                                ps.println(a * b);
+                                System.out.println(exp + " = " + a * b);
+                                ps.println(exp + " = " + a * b);
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println("Operation Error!");
-                        ps.println("Operation Error!");
+                        System.out.println(exp + " = Operation Error!");
+                        ps.println(exp + " = Operation Error!");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Error! Not number");
-                    ps.println("Error! Not number");
+                    System.out.println(exp + " = Error! Not number");
+                    ps.println(exp + " = Error! Not number");
                 }
             }
         } catch (FileNotFoundException e) {
